@@ -1,0 +1,20 @@
+.hidden {
+  opacity: 0;
+  transition: opacity 1s linear;
+}
+
+.visible, .hidden:hover {
+  opacity: 1;
+  transition: opacity 1s linear;
+}
+
+audio {
+  outline: none;
+}
+
+.center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
