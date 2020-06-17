@@ -3,7 +3,8 @@
   transition: opacity 1s linear;
 }
 
-.visible, .hidden:hover {
+.visible,
+.hidden:hover {
   opacity: 1;
   transition: opacity 1s linear;
 }
