@@ -6,6 +6,7 @@ audio.addEventListener(
   function () {
     audio.classList.toggle('hidden');
     audio.classList.toggle('visible');
+    goFullscreen();
   },
   true
 );
@@ -18,3 +19,9 @@ body.addEventListener(
   },
   true
 );
+
+function goFullscreen() {
+  document.body
+    .requestFullscreen()
+    .then(() => screen.orientation.lock('landscape'));
+}
