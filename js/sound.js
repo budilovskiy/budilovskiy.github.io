@@ -1,27 +1,57 @@
-var audio = document.getElementsByClassName('p-sketch-outline')[0];
+var audio = document.getElementsByTagName('audio')[0];
+var playBtn = document.getElementById('playbutton');
+var controls = document.getElementById('controls');
 var body = document.getElementsByTagName('body')[0];
 
-audio.addEventListener(
-  'playing',
+playBtn.addEventListener('click', playPause, true);
+body.addEventListener(
+  'touchend',
   function () {
-    audio.classList.toggle('hidden');
-    audio.classList.toggle('visible');
-    goFullscreen();
+    if (!audio.paused) {
+      pause();
+    }
   },
   true
 );
 
-body.addEventListener(
-  'click',
-  function () {
-    audio.classList.toggle('hidden');
-    audio.classList.toggle('visible');
-  },
-  true
-);
+function playPause() {
+  audio.paused ? play() : pause();
+}
+
+function play() {
+  audio.play();
+  toggleHidden(true);
+  playBtn.classList.toggle('paused');
+  playBtn.classList.toggle('playing');
+  goFullscreen(true);
+}
+
+function pause() {
+  goNormalScreen();
+  audio.pause();
+  toggleHidden(false);
+  playBtn.classList.toggle('paused');
+  playBtn.classList.toggle('playing');
+}
+
+function toggleHidden(hide) {
+  if (hide) {
+    !audio.paused && controls.classList.add('hidden');
+  } else {
+    controls.classList.remove('hidden');
+  }
+}
 
 function goFullscreen() {
   document.body
     .requestFullscreen()
-    .then(() => screen.orientation.lock('landscape'));
+    .then(() => screen.orientation.lock('landscape'))
+    .catch(() => {});
+}
+
+function goNormalScreen() {
+  document
+    .exitFullscreen()
+    .then(() => screen.orientation.unlock)
+    .catch(() => {});
 }

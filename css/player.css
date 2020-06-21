@@ -1,16 +1,13 @@
 .hidden {
   opacity: 0;
-  transition: opacity 1s linear;
-}
+  visibility: hidden;
+  transition: visibility 2s ease, opacity 2s ease;
+}s
 
-.visible,
-.hidden:hover {
+.controls {
   opacity: 1;
-  transition: opacity 1s linear;
-}
-
-audio {
-  outline: none;
+  visibility: visible;
+  transition: visibility 1s ease, 1s opacity ease;
 }
 
 .center {
@@ -18,4 +15,27 @@ audio {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.play-controls {
+  width: 100%;
+  left: 0;
+}
+
+.play-btn {
+  cursor: pointer;
+  border-color: transparent transparent transparent rgb(255, 255, 255, 0.85);
+  outline: none;
+}
+
+.paused {
+  border-style: solid;
+  border-width: 37px 0 37px 60px;
+}
+
+.playing {
+  width: 0;
+  height: 74px;
+  border-style: double;
+  border-width: 0px 0 0px 60px;
 }

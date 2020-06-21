@@ -8,14 +8,19 @@
 
 <body>
   <div class="l-page l-page--white" data-id="glitch">
-    <div class="l-page l-page--white" data-id="glitch">
-      <canvas class="p-canvas-webgl" id="canvas-webgl"></canvas>
-      <div class="p-sketch-outline visible center">
-        <p class="p-sketch-outline__description">Yann Tiersen - Infinity</p>
-        <audio autobuffer controls loop>
-          <source src="./audio/jann_tiersen_-_infinity.mp3">
-        </audio>
+    <canvas class="p-canvas-webgl" id="canvas-webgl"></canvas>
+    <div class="play-controls p-sketch-outline center">
+      <div onMouseOver="toggleHidden(false)" onMouseOut="toggleHidden(true)">
+        <div id='controls' class="controls center">
+          <div id="playbutton" class="play-btn paused"></div>
+          <p class="p-sketch-outline__description">Yann Tiersen - Infinity</p>
+        </div>
       </div>
+    </div>
+    <div class="p-sketch-outline">
+      <audio autobuffer loop>
+        <source src="./audio/jann_tiersen_-_infinity.mp3">
+      </audio>
     </div>
   </div>
 
